@@ -19,9 +19,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void gotoNolans(View v){
-
+        Intent i = new Intent(this, nolansCafeInformation.class);
+        startActivity(i);
     }
     public void gotoMap(View v){
-
+        Intent i = new Intent(this, MapsActivity.class);
+        startActivity(i);
     }
 }
