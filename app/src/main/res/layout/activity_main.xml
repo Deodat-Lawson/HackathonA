@@ -14,6 +14,7 @@
         android:layout_marginStart="-15dp"
         android:layout_marginBottom="-30dp"
         android:background="#00FFFFFF"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,49 +25,57 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="277dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="596dp"
+        android:layout_width="239dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="604dp"
         android:background="#00FFFFFF"
         android:onClick="gotoMap"
-        android:text="      Maps"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
         app:rippleColor="#00FFFFFF" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="277dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="520dp"
+        android:layout_width="211dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="524dp"
         android:background="#00FFFFFF"
         android:onClick="gotoNolans"
-        android:text="       Nolan's Cafe"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
         app:rippleColor="#00FFFFFF" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="277dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="436dp"
+        android:layout_width="241dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="452dp"
         android:background="#00FFFFFF"
         android:onClick="gotoHopkinsCafe"
-        android:text="       Hopkin's Cafe"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
         app:rippleColor="#00FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="396dp"
+        android:layout_height="732dp"
+        android:layout_marginStart="-14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/android_large__1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

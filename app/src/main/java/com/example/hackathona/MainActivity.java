@@ -11,11 +11,12 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("tst1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void gotoHopkinsCafe(View v) {

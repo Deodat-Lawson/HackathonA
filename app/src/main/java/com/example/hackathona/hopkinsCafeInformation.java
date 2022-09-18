@@ -2,47 +2,46 @@ package com.example.hackathona;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.StringTokenizer;
 
 public class hopkinsCafeInformation extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hopkins_cafe_information);
 
-
-        FileReadInput input = new FileReadInput();
+        InputStream inputStream = null, inputStream1 = null;
         try {
-            input.readWaitTime();
+            inputStream = getAssets().open("hopP_M.txt");
+            inputStream1 = getAssets().open("hopTt_M.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ArrayList<Double> EstimateNumOfPPlHop = input.allWaitTimeAndPeople.get(0);
-        ArrayList<Double> EstimateNumOfTimeHop = input.allWaitTimeAndPeople.get(1);
+        FileReadInput fileReadInput = new FileReadInput();
+        fileReadInput.ReadInput(inputStream,0);
+        fileReadInput.ReadInput(inputStream1,1);
+//
+        ArrayList<Double> EstimateNumOfPPlHop = fileReadInput.allWaitTimeAndPeople.get(0);
+        ArrayList<Double> EstimateNumOfTimeHop = fileReadInput.allWaitTimeAndPeople.get(1);
 
         int numOfPplSize = EstimateNumOfPPlHop.size();
         int numOfTimeSize = EstimateNumOfTimeHop.size();
 
-        final int[] currPPl = {0};
-        final int[] currTime = {0};
+        final int[] currPPl = {15};
+        final int[] currTime = {15};
+
+        final int[] increase = {0};
 
         Thread t = new Thread(){
             @Override
@@ -55,29 +54,7 @@ public class hopkinsCafeInformation extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                                TextView second1, day, year;
-//                                second1 = findViewById(R.id.second);
-//
-//
-//                                Date currentTime = Calendar.getInstance().getTime();
-//
-//                                String formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime);
-//
-//                                int second = DateFormat.SECOND_FIELD;
-//                                int minute = DateFormat.MINUTE_FIELD;
-//                                int hour = DateFormat.HOUR0_FIELD;
-//
-//                                String[] TimeFactor = new String[6];
-//                                TimeFactor[0] = ("" + second);
-//                                TimeFactor[1] = ("" + minute);
-//                                TimeFactor[2] = ("" + hour);
-//
-//                                String[] Time2 = formattedDate.split(",");
-//                                System.arraycopy(Time2, 0, TimeFactor, 3, Time2.length);
-//
-//                                String ds = ("" + second);
-//                                second1.setText(ds);
-//
+
 
 
                                 //Time
@@ -88,23 +65,28 @@ public class hopkinsCafeInformation extends AppCompatActivity {
                                 tsecond.setText(secString);
 
                                 //Wait People initialization
-                                if(currPPl[0] == numOfPplSize){
+                                if(currPPl[0] >= numOfPplSize){
                                     currPPl[0] = 0;
                                 }
-                                if(currTime[0] == numOfTimeSize){
+                                if(currTime[0] >= numOfTimeSize){
                                     currTime[0] = 0;
                                 }
 
                                 TextView pplTxt = (TextView) findViewById(R.id.hopEstPpl);
                                 TextView timeTxt = (TextView) findViewById(R.id.hopEstTime);
-                                String pplString = ("" + currPPl[0]);
-                                String timeString = ("" + currTime[0]);
+
+                                String pplString = (int)(Math.max(EstimateNumOfPPlHop.get(currPPl[0])-(5*Math.random()),0)) + " ~ " + (int)(EstimateNumOfPPlHop.get(currPPl[0])+(5*Math.random())) + " People";
+                                String timeString = (int)(Math.max(EstimateNumOfTimeHop.get(currTime[0])-(0.5*Math.random()),0)) + " ~ " + (int)(EstimateNumOfTimeHop.get(currTime[0])+(2*Math.random())) + " Minutes";
+
                                 pplTxt.setText(pplString);
                                 timeTxt.setText(timeString);
 
-
-                                currPPl[0]++;
-                                currTime[0]++;
+                                increase[0]++;
+                                if(increase[0] > 300) {
+                                    currPPl[0]++;
+                                    currTime[0]++;
+                                    increase[0] = 0;
+                                }
 
 
                             }

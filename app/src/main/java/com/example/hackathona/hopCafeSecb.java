@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class hopCafeSecb extends AppCompatActivity {
 
@@ -12,6 +17,67 @@ public class hopCafeSecb extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hop_cafe_secb);
+
+        InputStream inputStream1 = null;
+        try {
+            inputStream1 = getAssets().open("hopBt_M.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        FileReadInput fileReadInput = new FileReadInput();
+        fileReadInput.ReadInput(inputStream1,3);
+
+        ArrayList<Double> EstimateNumOfTimeHop = fileReadInput.allWaitTimeAndPeople.get(3);
+
+        int numOfTimeSize = EstimateNumOfTimeHop.size();
+
+        final int[] currTime = {15};
+
+        final int[] increase = {0};
+
+        Thread t = new Thread(){
+            @Override
+            public void run(){
+                try{
+                    while (!isInterrupted()){
+
+                        Thread.sleep(1000);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                //Wait initialization
+                                if(currTime[0] >= numOfTimeSize){
+                                    currTime[0] = 0;
+                                }
+
+                                TextView timeTxt = (TextView) findViewById(R.id.hopEstTimeB);
+                                String timeString = (int)(Math.max(EstimateNumOfTimeHop.get(currTime[0])-(0.5*Math.random()),0)) + " ~ " + (int)(EstimateNumOfTimeHop.get(currTime[0])+(2*Math.random())) + " Min";
+
+                                timeTxt.setText(timeString);
+
+                                increase[0]++;
+                                if(increase[0] > 300) {
+                                    currTime[0]++;
+                                    increase[0] = 0;
+                                }
+
+
+                            }
+                        });
+                    }
+                }
+                catch (InterruptedException e){
+
+                }
+            }
+        };
+
+        t.start();
+
+
     }
 
     public void gotoSpecificSection(View v) {
