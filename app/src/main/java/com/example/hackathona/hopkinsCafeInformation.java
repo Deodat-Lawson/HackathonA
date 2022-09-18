@@ -18,7 +18,6 @@ public class hopkinsCafeInformation extends AppCompatActivity {
 
     TextView second1, day, year;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

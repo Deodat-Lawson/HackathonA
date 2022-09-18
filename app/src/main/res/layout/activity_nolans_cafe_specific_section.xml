@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nolansCafeSpecificSection">
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="38dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
+        android:onClick="gotoMenu"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="396dp"
+        android:layout_height="732dp"
+        android:layout_marginStart="-14dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/android_large___9" />
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="101dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="632dp"
+        android:background="#00FFFFFF"
+        android:onClick="gotoNolans"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@+id/imageView13" />
+</androidx.constraintlayout.widget.ConstraintLayout>
