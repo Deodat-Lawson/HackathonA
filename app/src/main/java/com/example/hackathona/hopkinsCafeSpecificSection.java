@@ -19,4 +19,24 @@ public class hopkinsCafeSpecificSection extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void gotoSecA(View v){
+        Intent i = new Intent(this, hopCafeSecA.class);
+        startActivity(i);
+    }
+
+    public void gotoSecB(View v){
+        Intent i = new Intent(this, hopCafeSecb.class);
+        startActivity(i);
+    }
+
+    public void gotoSecC(View v){
+        Intent i = new Intent(this, hopCafeSecc.class);
+        startActivity(i);
+    }
+
+    public void gotoSecD(View v){
+        Intent i = new Intent(this, hopCafesecd.class);
+        startActivity(i);
+    }
+
 }

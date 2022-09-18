@@ -13,7 +13,35 @@
         android:theme="@style/Theme.HackathonA"
         tools:targetApi="31">
         <activity
-            android:name=".hopCafeSectionA"
+            android:name=".hopCafeMenu"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".hopCafesecd"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".hopCafeSecc"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".hopCafeSecb"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".hopCafeSecA"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
