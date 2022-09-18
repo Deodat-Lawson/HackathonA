@@ -102,6 +102,11 @@ public class hopkinsCafeInformation extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void gotoMenu(View v) {
+        Intent i = new Intent(this, hopCafeMenu.class);
+        startActivity(i);
+    }
+
 
 
 }

@@ -20,6 +20,18 @@
         app:srcCompat="@drawable/android_large___4" />
 
     <Button
+        android:id="@+id/button17"
+        android:layout_width="38dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:onClick="gotoMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/button12"
         android:layout_width="167dp"
         android:layout_height="56dp"
