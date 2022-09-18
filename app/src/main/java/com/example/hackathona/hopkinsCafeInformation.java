@@ -8,15 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class hopkinsCafeInformation extends AppCompatActivity {
 
-    TextView second1, day, year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +28,30 @@ public class hopkinsCafeInformation extends AppCompatActivity {
         setContentView(R.layout.activity_hopkins_cafe_information);
 
 
+        FileReadInput input = new FileReadInput();
+        try {
+            input.readWaitTime();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Double> EstimateNumOfPPlHop = input.allWaitTimeAndPeople.get(0);
+        ArrayList<Double> EstimateNumOfTimeHop = input.allWaitTimeAndPeople.get(1);
+
+        int numOfPplSize = EstimateNumOfPPlHop.size();
+        int numOfTimeSize = EstimateNumOfTimeHop.size();
+
+        final int[] currPPl = {0};
+        final int[] currTime = {0};
 
         Thread t = new Thread(){
             @Override
             public void run(){
                 try{
                     while (!isInterrupted()){
+
                         Thread.sleep(1000);
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -59,20 +80,33 @@ public class hopkinsCafeInformation extends AppCompatActivity {
 //
 
 
-
+                                //Time
                                 TextView tsecond = (TextView) findViewById(R.id.second);
-
                                 long date = System.currentTimeMillis();
-
-                                //Current Hour, Minute, Time, Month, Date, Year,
                                 SimpleDateFormat sec = new SimpleDateFormat("H:mm:ss a");
-
-
-
                                 String secString = sec.format(date);
-
-
                                 tsecond.setText(secString);
+
+                                //Wait People initialization
+                                if(currPPl[0] == numOfPplSize){
+                                    currPPl[0] = 0;
+                                }
+                                if(currTime[0] == numOfTimeSize){
+                                    currTime[0] = 0;
+                                }
+
+                                TextView pplTxt = (TextView) findViewById(R.id.hopEstPpl);
+                                TextView timeTxt = (TextView) findViewById(R.id.hopEstTime);
+                                String pplString = ("" + currPPl[0]);
+                                String timeString = ("" + currTime[0]);
+                                pplTxt.setText(pplString);
+                                timeTxt.setText(timeString);
+
+
+                                currPPl[0]++;
+                                currTime[0]++;
+
+
                             }
                         });
                     }
@@ -105,6 +139,8 @@ public class hopkinsCafeInformation extends AppCompatActivity {
         Intent i = new Intent(this, hopCafeMenu.class);
         startActivity(i);
     }
+
+
 
 
 
